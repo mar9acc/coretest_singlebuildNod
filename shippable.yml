@@ -80,8 +80,8 @@ build:
     - docker build -t=742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_node .
     - docker push 742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_node
    # Testing pdr build and push
-    - docker build -t $REGISTRY_URL/$PROJECT_NAME/$IMAGE_REPO:$BRANCH.$BUILD_NUMBER .
-    - docker push $REGISTRY_URL/$PROJECT_NAME/$IMAGE_REPO:$BRANCH.$BUILD_NUMBER
+    #- docker build -t $REGISTRY_URL/$PROJECT_NAME/$IMAGE_REPO:$BRANCH.$BUILD_NUMBER .
+    #- docker push $REGISTRY_URL/$PROJECT_NAME/$IMAGE_REPO:$BRANCH.$BUILD_NUMBER
     
   on_success:
   # Testing to push to s3 bucket
