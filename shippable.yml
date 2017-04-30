@@ -18,7 +18,7 @@ env:
     - AWS_S3_REGION='us-west-2'
     - REGISTRY_URL=quay.io
     - IMAGE_REPO=ci-push-docker-private-registry
-    - PROJECT_NAME=coretest_singlebuildNod
+    - PROJECT_NAME=test-repo
     
   matrix:
     - M1=ONE
