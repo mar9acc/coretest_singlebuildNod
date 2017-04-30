@@ -13,6 +13,12 @@ env:
     - IMAGE_NAME=shippabledocker/sample_node_pvt
     - IMAGE_TAG=latest.40
     - IMAGE_PULL=true     
+    - secure: qvQeB+TBYYeMtso9vOtgMx0mJHM0+XxGNqN5bqmOEb/7we5Y8NFBs1cjc4BouTyDMGBA5YcUoBwpiKLAYjAjhdRhmMK1wn4fH+4OLLZY9YWW9X8/kjY0F5Qhrht5CS+eyTDvvXOuTzAataNYyhWE0Bvo0Qba+nb/huqIEKB/dhQEZfRE0Xc6Un/eveGwbyJnUn2OTAkTrl/OTm/iXXSC84dmunEF4FTdKD6qtpzbP11S8Kn0FSH8iArf76jjN4ZNDdi2nc2ehYGNTEGojnAn4dxo8rCptn1R5SbR4ZoLTNpOwQ5+MBsplnLUt3wAjrcfDKJjEP5BUdWhAD9cW4lZXw==
+    - AWS_S3_BUCKET='s3://push-to-s3'
+    - AWS_S3_REGION='us-west-2'
+    - REGISTRY_URL=quay.io
+    - IMAGE_REPO=ci-push-docker-private-registry
+    - PROJECT_NAME=coretest_singlebuildNod
     
   matrix:
     - M1=ONE
@@ -73,7 +79,14 @@ build:
    # Testing ecr build and push
     - docker build -t=742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_node .
     - docker push 742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_node
-
+   # Testing pdr build and push
+    - docker build -t $REGISTRY_URL/$PROJECT_NAME/$IMAGE_REPO:$BRANCH.$BUILD_NUMBER .
+    - docker push $REGISTRY_URL/$PROJECT_NAME/$IMAGE_REPO:$BRANCH.$BUILD_NUMBER
+    
+  on_success:
+  # Testing to push to s3 bucket
+    - aws s3 sync $SHIPPABLE_BUILD_DIR $AWS_S3_BUCKET --region $AWS_S3_REGION
+    
 integrations:
   hub:
  #Docker integration
@@ -96,6 +109,9 @@ integrations:
         only:
           - m*
           
+    - integrationName: ship-pdr
+      type: "private docker registry" 
+      
   generic:
     - integrationName: "ship-keyvalue"
 
