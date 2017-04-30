@@ -80,7 +80,7 @@ build:
     - docker build -t=742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_node .
     - docker push 742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_node
    # Testing pdr build and push
-    - docker build -t $REGISTRY_URL/$PROJECT_NAME/$IMAGE_REPO .
+    - docker build -t $REGISTRY_URL/$PROJECT_NAME/$IMAGE_REPO:master.1116 .
     - docker push $REGISTRY_URL/$PROJECT_NAME/$IMAGE_REPO:master.1116
     
   on_success:
