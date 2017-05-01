@@ -92,6 +92,9 @@ integrations:
  #Docker integration
     - integrationName: ship-docker
       type: docker 
+      branches: #Testing the wildcards for branches include
+        only:
+          - master
   #GCR integration
     - integrationName: ship-gcr
       type: gcr
