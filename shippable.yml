@@ -131,23 +131,4 @@ integrations:
         - shiptest.rc.ow@gmail.com
         - shiptest.rc.me@gmail.com
       on_success: always 
-      
-#EB deploy for sample code 
-  deploy:
-    - integrationName: "ship-aws"
-      type: aws
-      target: eb_paas
-      platform: "Node.js"
-      application_name: "sample-node-eb-sample-app"
-      env_name: "Sample-env-2"
-      region: "us-west-2"  
-#EB deploy for sample image-docker      
-    - integrationName: "ship-aws"
-      type: aws
-      target: eb_docker
-      application_name: "sample-node-eb-docker-app"
-      env_name: "Sample-env-3"
-      bucket_name: "elasticbeanstalk-us-east-1-742038439709"
-      region: "us-west-2"
-      image_name: "shippabledocker/pipelinev2"
-      image_tag: "$BRANCH.$BUILD_NUMBER"
+ 
