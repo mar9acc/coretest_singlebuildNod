@@ -12,7 +12,8 @@ env:
     - IMAGE_NAME=shippabledocker/sample_node_pvt
     - IMAGE_TAG=latest.40
     - IMAGE_PULL=true     
-    - secure: qvQeB+TBYYeMtso9vOtgMx0mJHM0+XxGNqN5bqmOEb/7we5Y8NFBs1cjc4BouTyDMGBA5YcUoBwpiKLAYjAjhdRhmMK1wn4fH+4OLLZY9YWW9X8/kjY0F5Qhrht5CS+eyTDvvXOuTzAataNYyhWE0Bvo0Qba+nb/huqIEKB/dhQEZfRE0Xc6Un/eveGwbyJnUn2OTAkTrl/OTm/iXXSC84dmunEF4FTdKD6qtpzbP11S8Kn0FSH8iArf76jjN4ZNDdi2nc2ehYGNTEGojnAn4dxo8rCptn1R5SbR4ZoLTNpOwQ5+MBsplnLUt3wAjrcfDKJjEP5BUdWhAD9cW4lZXw==
+    - secure: qvQeB+TBYYeMtso9vOtgMx0mJHM0+XxGNqN5bqmOEb/7we5Y8NFBs1cjc4BouTyDMGBA5YcUoBwpiKLAYjAjhdRhmMK1wn4fH+4OLLZY9YWW9X8/kjY0F5Qhrht5CS+eyTDvvXOuTzAataNYyhWE0Bvo0Qba+nb/huqIEKB/dhQEZfRE0Xc6Un/eveGwbyJnUn2OTAkTrl/OTm/iXXSC84dmunEF4FTdKD6qtpzbP11S8Kn0FSH8iArf76jjN4ZNDdi2nc2ehYGNTEGojnAn4dxo8rCptn1R5SbR4ZoLTNpOwQ5+MBsplnLUt3wAjrcfDKJjEP5BUdWhAD9cW4lZXw== 
+        # above encryption is for s3 push AWS credentails keys "AWS_SECRET_ACCESS_KEY=**** AWS_ACCESS_KEY_ID=******"
     - AWS_S3_BUCKET='s3://push-to-s3'
     - AWS_S3_REGION='us-west-2'
     - REGISTRY_URL=quay.io
@@ -131,9 +132,3 @@ integrations:
         - shiptest.rc.ow@gmail.com
         - shiptest.rc.me@gmail.com
       on_success: always 
-      
-      
-      
- 
- 
- 
