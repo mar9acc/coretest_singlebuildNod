@@ -80,7 +80,8 @@ build:
     - docker build -t=742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_node .
     - docker push 742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_node
    # Testing multiple ecr push for different region
-    - docker tag 742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_java:latest 742038439709.dkr.ecr.us-east-1.amazonaws.com/sample_php:latest2
+    #- docker tag 742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_java:latest 742038439709.dkr.ecr.us-east-1.amazonaws.com/sample_php:latest2
+    - docker build -t=742038439709.dkr.ecr.us-east-1.amazonaws.com/sample_php:latest2 .
     - docker push 742038439709.dkr.ecr.us-east-1.amazonaws.com/sample_php:latest2
    # Testing pdr build and push
     - docker build -t $REGISTRY_URL/$PROJECT_NAME/$IMAGE_REPO:master.1116 .
