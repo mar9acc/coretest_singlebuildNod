@@ -44,7 +44,6 @@ fi;
 
 if [[ "$CUSTOM" == "ymlenv" ]]; then
   echo "CUSTOM env matched value"
-"
 else
   echo ERROR: Failed, wrong value forthe CUSTOM variable. Please recheck the env variables 
   exit 1
