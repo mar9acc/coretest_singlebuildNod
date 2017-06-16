@@ -65,6 +65,7 @@ build:
     - echo $key1 #echoes the value of custom integrations added through key-value pair integrations.
     - echo $key2
     - echo jobTriggeredByName="$JOB_TRIGGERED_BY_NAME"
+    - ./env.sh  
   #  - docker pull 742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_java:latest
    
   post_ci:
