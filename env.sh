@@ -1,7 +1,8 @@
 #!/bin/bash -e
 
 #export NODE_VERSION='{node --version}'
-export NODE_VERSION=(eval echo "$"node --version"")
+#export NODE_VERSION=(eval echo "$"node --version"")
+export NODE_VERSION=$SHIPPABLE_NODE_VERSION
 echo NODE_VERSION=$NODE_VERSION
 
 if [[ "$NODE_VERSION" == "v0.10.37" ]]; then
