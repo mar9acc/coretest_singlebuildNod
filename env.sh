@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-NODE_VERSION=node --version
+NODE_VERSION='node --version'
 echo NODE_VERSION=$NODE_VERSION
 
 if [[ "$NODE_VERSION" == "v0.10.37" ]]; then
