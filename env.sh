@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
 export NODE_VERSION="node --version"
+echo NODE_VERSION=$NODE_VERSION
 
 if [[ "$NODE_VERSION" == "v0.10.37" ]]; then
   echo "TEST env matched value"
