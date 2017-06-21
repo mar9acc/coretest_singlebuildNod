@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
-export NODE_VERSION=node --version
+setenv NODE_VERSION "node --version"
+#export NODE_VERSION=node --version
 echo NODE_VERSION=$NODE_VERSION
 
 if [[ "$NODE_VERSION" == "v0.10.37" ]]; then
