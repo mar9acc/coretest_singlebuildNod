@@ -137,6 +137,5 @@ integrations:
         - shiptest.rc.me@gmail.com
       on_success: always  
       
-      
-      
+     
 
