@@ -20,6 +20,8 @@ env:
     - IMAGE_REPO=ci-push-docker-private-registry
     - PROJECT_NAME=qhode1234
     - CUSTOM=ymlenv
+    - LINKSTOVERIFY=https://www.shippable.com 
+    - secure: qdkJKLwKdYzNdmLvdpjW1bArdqxjprTXVeP9iOLcc0uocb5Cy7nBqpR+TfvEH2Ga9A+49ZJOZzX7oH6+/VffI+GblmZyN8x3IRMlG0W3yo6lzkOIMzsDurGyXr0zVMcOyHcUYX8EppSwbOqlOaSbZHOXLFskpHjxfCctIXHzWGCn48uSg3XNVcYkfo5tkT/WiW3snclmoDSXZ7xgHKV1v9pI+Sg0BOiqQD8JvEgoq9rj7A8fBZpfS29EsisPA5QMcV1GLhm4RPFLf4Y+CwPojI1Jfj6Oj72n0epw56Y6lbmAo+JfHhrTFeZrxvJyExfNTt2eNcK31cytAgFZ+B4H/g==
     
   matrix:
     - M1=ONE
@@ -67,6 +69,9 @@ build:
     - echo $key2
     - echo jobTriggeredByName="$JOB_TRIGGERED_BY_NAME"
     - ./env.sh  
+    - echo "linkstoverifyfromenv=$LINKSTOVERIFY"
+    - echo "https://gitlab.com"
+    - echo "pipeline job which have public accesss secured links $SECUREDLINKS"
   #  - docker pull 742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_java:latest
    
   post_ci:
