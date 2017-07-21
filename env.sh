@@ -3,8 +3,8 @@
 #export NODE_VERSION='{node --version}'
 #export NODE_VERSION=(eval echo "$"node --version"")
 
-NODE_VERSION='node --version'
-eval $NODE_VERSION
+node_version='node --version'
+export NODE_VERSION=$(eval "$node_version")
 echo NODE_VERSION=$NODE_VERSION
 
 #export NODE_VERSION=$SHIPPABLE_NODE_VERSION
