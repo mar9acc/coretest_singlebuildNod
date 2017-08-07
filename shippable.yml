@@ -43,10 +43,10 @@ build:
   #  - docker pull 742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_java:latest
    
   post_ci:
+    - docker push shiphitchcock4/hitchcock4_sample_nodenew:$BRANCH.$BUILD_NUMBER 
   # Testing docker build and push
    # - docker build -t=$IMAGE_NAME:$IMAGE_TAG .
     
-    - docker push shiphitchcock4/hitchcock4_sample_nodenew:$BRANCH.$BUILD_NUMBER .
   
 integrations:
   hub:
