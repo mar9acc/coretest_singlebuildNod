@@ -25,7 +25,7 @@ build:
    
     
   pre_ci_boot:
-    image_name: shiphitchcock4/hitchcock4_sample_node
+    image_name: shiphitchcock4/hitchcock4_sample_nodenew
     image_tag: latest
     pull: true
     options: '--privileged=true --net=bridge -e FOO=true -e BOO=false' 
@@ -43,8 +43,8 @@ build:
    
   post_ci:
   # Testing docker build and push
-    - docker build -t=shiphitchcock4/testaug2017postci .
-    - docker push shiphitchcock4/testaug2017postci
+    - docker build -t=shiphitchcock4/testaug2017postcipvt .
+    - docker push shiphitchcock4/hitchcock4_sample_nodenew:$BRANCH.$BUILD_NUMBER 
   
 integrations:
   hub:
