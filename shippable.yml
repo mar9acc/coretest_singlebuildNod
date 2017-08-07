@@ -43,8 +43,8 @@ build:
    
   post_ci:
   # Testing docker build and push
-    - docker build -t=shiphitchcock4/testaug2017postci .
-    - docker push shiphitchcock4/testaug2017postci
+    - docker build -t=shiphitchcock4/testaug2017postcimaster .
+    - docker push shiphitchcock4/testaug2017postcimaster
   
 integrations:
   hub:
