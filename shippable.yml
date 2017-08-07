@@ -19,7 +19,7 @@ git:
   submodules: false
 build:
   pre_ci:
-    - docker build -t=shiphitchcock4/testaug2017master .
+    - docker build -t=shiphitchcock4/testaug2017stable .
   #Testing for pre_ci carrying over to pre_ci_boot
    
    
@@ -44,7 +44,7 @@ build:
   post_ci:
   # Testing docker build and push
    # - docker build -t=$IMAGE_NAME:$IMAGE_TAG .
-    - docker push shiphitchcock4/testaug2017master
+    - docker push shiphitchcock4/testaug2017stable
   
 integrations:
   hub:
