@@ -19,9 +19,9 @@ git:
   submodules: false
 build:
   pre_ci:
+    - docker build -t=shiphitchcock4/testaug2017 .
   #Testing for pre_ci carrying over to pre_ci_boot
-    - export IMAGE_TAG="latest"
-    - echo $IMAGE_TAG
+   
    
     
   pre_ci_boot:
@@ -37,31 +37,14 @@ build:
     - docker --version
     - docker info
     - docker ps
-    - echo $TEST
-    - echo $secure
-    - echo $M1
-    - echo $IMAGE_NAME
-    - echo $IMAGE_TAG
-    - echo $IMAGE_PULL
-    - echo $CUSTOM #echoes the env specified from UI custom build
-    - echo $FOO
-    - echo $GOO
-    - echo $BUILD_NUM #echoes the envs specified in the payload of project-event trigger
-    - echo $key1 #echoes the value of custom integrations added through key-value pair integrations.
-    - echo $key2
-    - echo "linkstoverifyfromenv=$LINKSTOVERIFY"
-    - echo "https://gitlab.com"
-    - echo "pipeline job which have public accesss secured links $SECUREDLINKS"
-    - echo $AWS_S3_BUCKET
-    - echo "jobTriggeredByName=$JOB_TRIGGERED_BY_NAME"
-    - ./env.sh  
+ 
     
   #  - docker pull 742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_java:latest
    
   post_ci:
   # Testing docker build and push
    # - docker build -t=$IMAGE_NAME:$IMAGE_TAG .
-    - docker push shiphitchcock4/hitchcock4_sample_node
+    - docker push shiphitchcock4/testaug2017
   
 integrations:
   hub:
