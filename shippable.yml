@@ -33,8 +33,8 @@ branches:
   except:
     - nonmaster
 #Uncomment below section to disable the private submodules
-#git:
-   #submodules: false
+git:
+  submodules: false
 build:
   pre_ci:
   #Testing for pre_ci carrying over to pre_ci_boot
@@ -43,9 +43,9 @@ build:
    
     
   pre_ci_boot:
-    image_name: $IMAGE_NAME
-    image_tag: $IMAGE_TAG
-    pull: $IMAGE_PULL
+    image_name: shiphitchcock4/hitchcock4_sample_node
+    image_tag: latest
+    pull: true
     options: '--privileged=true --net=bridge -e FOO=true -e BOO=false' 
 
   ci:
@@ -78,78 +78,6 @@ build:
    
   post_ci:
   # Testing docker build and push
-    - docker build -t=$IMAGE_NAME:$IMAGE_TAG .
-    - docker push $IMAGE_NAME:$IMAGE_TAG
-  # Testing gcr build and push
-    - docker build -t=gcr.io/vidya-project/node1-img:master.33  .
-    - docker push gcr.io/vidya-project/node1-img:master.33
-  # Testing quay build and push
-    - docker build -t=quay.io/revathird/samplenode_test .
-    - docker push quay.io/revathird/samplenode_test
-   # Testing ecr build and push
-    - docker build -t=742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_node .
-    - docker push 742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_node
-   # Testing multiple ecr push for different region
-    #- docker tag 742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_java:latest 742038439709.dkr.ecr.us-east-1.amazonaws.com/sample_php:latest2
-    - docker build -t=742038439709.dkr.ecr.us-east-1.amazonaws.com/sample_php:latest2 .
-    - docker push 742038439709.dkr.ecr.us-east-1.amazonaws.com/sample_php:latest2
-   # Testing pdr build and push
-    - docker build -t $REGISTRY_URL/$PROJECT_NAME/$IMAGE_REPO:master.1116 .
-    - docker push $REGISTRY_URL/$PROJECT_NAME/$IMAGE_REPO:master.1116
-    
-  on_success:
-  # Testing to push to s3 bucket
-    - aws s3 sync $SHIPPABLE_BUILD_DIR $AWS_S3_BUCKET --region $AWS_S3_REGION
-    
-integrations:
-  hub:
- #Docker integration
-    - integrationName: ship-docker
-      type: docker 
-      branches: #Testing the wildcards for branches include
-        only:
-          - master
-  #GCR integration
-    - integrationName: ship-gcr
-      type: gcr
-  #ECR integration
-    - integrationName: ship-ecr
-      type: ecr
-      region: us-west-2
-      branches: #Testing the wildcards for branches exclude
-        except:
-          - n*
-    - integrationName: ship-ecreast1
-      type: ecr
-      region: us-east-1
-      
-  #Quay.io integration    
-    - integrationName: ship-quay
-      type: quay.io
-      branches: #Testing the wildcards for branches include
-        only:
-          - m*
-          
-    - integrationName: ship-pdr
-      type: "private docker registry" 
-      
-  generic:
-    - integrationName: "ship-keyvalue"
-
-  notifications:
-    - integrationName: email         
-      type: email        
-      recipients: 
-        - shiptest.rc.ow@gmail.com
-        - shiptest.rc.me@gmail.com
-      on_success: always  
-      on_failure: always
-      
-     
-     
-     
-
-
-
-
-
+   # - docker build -t=$IMAGE_NAME:$IMAGE_TAG .
+    - docker push shiphitchcock4/hitchcock4_sample_node
+  
