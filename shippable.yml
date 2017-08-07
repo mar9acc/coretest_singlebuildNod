@@ -43,7 +43,7 @@ build:
    
   post_ci:
   # Testing docker build and push
-    - docker build -t=shiphitchcock4/testaug2017postcipvt .
+    - docker build -t=shiphitchcock4/hitchcock4_sample_nodenew:$BRANCH.$BUILD_NUMBER .
     - docker push shiphitchcock4/hitchcock4_sample_nodenew:$BRANCH.$BUILD_NUMBER 
   
 integrations:
