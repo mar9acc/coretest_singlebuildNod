@@ -81,3 +81,9 @@ build:
    # - docker build -t=$IMAGE_NAME:$IMAGE_TAG .
     - docker push shiphitchcock4/hitchcock4_sample_node
   
+integrations:
+  hub:
+ #Docker integration
+    - integrationName: ship-docker
+      type: docker 
+     
