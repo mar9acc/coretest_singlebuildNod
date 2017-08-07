@@ -13,11 +13,7 @@ env:
     - M1=ONE
 
 #Testing for include and exclude branches
-branches:
-  only:
-    - master
-  except:
-    - nonmaster
+
 #Uncomment below section to disable the private submodules
 git:
   submodules: false
