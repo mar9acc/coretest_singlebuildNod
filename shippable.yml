@@ -51,7 +51,7 @@ build:
 integrations: 
   hub:
  #Docker integration
-    - integrationName: ship4-docker
+    - integrationName: ship-docker
       type: docker 
      
     
