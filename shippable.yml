@@ -26,8 +26,8 @@ build:
    
     
   pre_ci_boot:
-    image_name: shippabledocker/sample_node_pvt:officialimgtag
-    image_tag: latest
+    image_name: shippabledocker/sample_node_pvt
+    image_tag: officialimgtag
     pull: true
     options: '--privileged=true --net=bridge -e FOO=true -e BOO=false' 
 
