@@ -20,7 +20,7 @@ git:
 build:
   pre_ci:
     
-    - docker build -t=shiphitchcock4/hitchcock4_sample_nodenew:$BRANCH.$BUILD_NUMBER .
+    - docker build -t=shippabledocker/sample_node_pvt:$BRANCH.$BUILD_NUMBER .
   #Testing for pre_ci carrying over to pre_ci_boot
    
    
@@ -43,7 +43,7 @@ build:
   #  - docker pull 742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_java:latest
    
   post_ci:
-    - docker push shiphitchcock4/hitchcock4_sample_nodenew:$BRANCH.$BUILD_NUMBER 
+    - docker push shippabledocker/sample_node_pvt:$BRANCH.$BUILD_NUMBER 
   # Testing docker build and push
    # - docker build -t=$IMAGE_NAME:$IMAGE_TAG .
     
