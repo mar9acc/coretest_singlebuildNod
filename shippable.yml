@@ -43,8 +43,8 @@ build:
   post_ci:
 
   # Testing gcr build and push
-    - docker build -t=gcr.io/vidya-project/node1-img:master.stable  .
-    - docker push gcr.io/vidya-project/node1-img:master.stable
+    - docker build -t=gcr.io/vidya-project/node1-img:master.master  .
+    - docker push gcr.io/vidya-project/node1-img:master.master
 
 integrations:
   hub:
