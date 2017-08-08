@@ -25,7 +25,7 @@ build:
    
     
   pre_ci_boot:
-    image_name: http://gcr.io/vidya-project/node1-img
+    image_name: gcr.io/vidya-project/node1-img
     image_tag: officialimgtag
     pull: true
     options: '--privileged=true --net=bridge -e FOO=true -e BOO=false' 
