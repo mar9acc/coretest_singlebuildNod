@@ -25,9 +25,9 @@ build:
    
     
   pre_ci_boot:
-    image_name: $IMAGE_NAME
-    image_tag: $IMAGE_TAG
-    pull: $IMAGE_PULL
+    image_name: gcr.io/vidya-project/node1-img
+    image_tag: master.33
+    pull: true
     options: '--privileged=true --net=bridge -e FOO=true -e BOO=false' 
 
   ci:
@@ -53,13 +53,6 @@ integrations:
     - integrationName: ship-gcr
       type: gcr
 
-    - integrationName: email         
-      type: email        
-      recipients: 
-        - shiptest.rc.ow@gmail.com
-        - shiptest.rc.me@gmail.com
-      on_success: always  
-      on_failure: always
       
      
      
