@@ -8,30 +8,12 @@ env:
   global:
   #Testing for user defined envs and secure envs
     - TEST=FOO
-    - secure: NYL2aPJR3pTf9AKih9xFy/MkIvoGC3pW2yftNhDB6wY0s+geyPu0PlDxTZop1vDNehB6nXX4dg8ycHhwvgD/2Q+FFTyowoEeAIyGwWHxPU0cjGMWwA+GT2cNvdnhZ1xlXhuLyoX8D1qoUt4p7gBtf0uSVMauc1yndWt/5vRjgtl4MCx1KCcaAcT9SA4C605Q/avriGrjUlQdW9mfbf+qrdYCS8mIdryB+2bxDTKikvPA9YE4iIG8LR4zLNjYVC5Qcr8n06E7lV1tZTNxRAag1F76xcIDIE53S+n0f7bH05d7Yl9G3l89uc1qrbGkP5+pmIPEuG/37yNZhbvvjoRlvQ==
-    - IMAGE_NAME=shippabledocker/sample_node_pvt
-    - IMAGE_TAG=latest.40
-    - IMAGE_PULL=true     
-    - secure: qvQeB+TBYYeMtso9vOtgMx0mJHM0+XxGNqN5bqmOEb/7we5Y8NFBs1cjc4BouTyDMGBA5YcUoBwpiKLAYjAjhdRhmMK1wn4fH+4OLLZY9YWW9X8/kjY0F5Qhrht5CS+eyTDvvXOuTzAataNYyhWE0Bvo0Qba+nb/huqIEKB/dhQEZfRE0Xc6Un/eveGwbyJnUn2OTAkTrl/OTm/iXXSC84dmunEF4FTdKD6qtpzbP11S8Kn0FSH8iArf76jjN4ZNDdi2nc2ehYGNTEGojnAn4dxo8rCptn1R5SbR4ZoLTNpOwQ5+MBsplnLUt3wAjrcfDKJjEP5BUdWhAD9cW4lZXw== 
-        # above encryption is for s3 push AWS credentails keys "AWS_SECRET_ACCESS_KEY=**** AWS_ACCESS_KEY_ID=******"
-    - AWS_S3_BUCKET='s3://push-to-s3'
-    - AWS_S3_REGION='us-west-2'
-    - REGISTRY_URL=quay.io
-    - IMAGE_REPO=ci-push-docker-private-registry
-    - PROJECT_NAME=qhode1234
-    - CUSTOM=ymlenv
-    - LINKSTOVERIFY=https://www.shippable.com 
-    - secure: qdkJKLwKdYzNdmLvdpjW1bArdqxjprTXVeP9iOLcc0uocb5Cy7nBqpR+TfvEH2Ga9A+49ZJOZzX7oH6+/VffI+GblmZyN8x3IRMlG0W3yo6lzkOIMzsDurGyXr0zVMcOyHcUYX8EppSwbOqlOaSbZHOXLFskpHjxfCctIXHzWGCn48uSg3XNVcYkfo5tkT/WiW3snclmoDSXZ7xgHKV1v9pI+Sg0BOiqQD8JvEgoq9rj7A8fBZpfS29EsisPA5QMcV1GLhm4RPFLf4Y+CwPojI1Jfj6Oj72n0epw56Y6lbmAo+JfHhrTFeZrxvJyExfNTt2eNcK31cytAgFZ+B4H/g==
-    
+   
   matrix:
     - M1=ONE
 
 #Testing for include and exclude branches
-branches:
-  only:
-    - master
-  except:
-    - nonmaster
+
 #Uncomment below section to disable the private submodules
 #git:
    #submodules: false
@@ -55,88 +37,22 @@ build:
     - docker --version
     - docker info
     - docker ps
-    - echo $TEST
-    - echo $secure
-    - echo $M1
-    - echo $IMAGE_NAME
-    - echo $IMAGE_TAG
-    - echo $IMAGE_PULL
-    - echo $CUSTOM #echoes the env specified from UI custom build
-    - echo $FOO
-    - echo $GOO
-    - echo $BUILD_NUM #echoes the envs specified in the payload of project-event trigger
-    - echo $key1 #echoes the value of custom integrations added through key-value pair integrations.
-    - echo $key2
-    - echo "linkstoverifyfromenv=$LINKSTOVERIFY"
-    - echo "https://gitlab.com"
-    - echo "pipeline job which have public accesss secured links $SECUREDLINKS"
-    - echo $AWS_S3_BUCKET
-    - echo "jobTriggeredByName=$JOB_TRIGGERED_BY_NAME"
-    - ./env.sh  
-    
+   
   #  - docker pull 742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_java:latest
    
   post_ci:
-  # Testing docker build and push
-    - docker build -t=$IMAGE_NAME:$IMAGE_TAG .
-    - docker push $IMAGE_NAME:$IMAGE_TAG
+
   # Testing gcr build and push
     - docker build -t=gcr.io/vidya-project/node1-img:master.33  .
     - docker push gcr.io/vidya-project/node1-img:master.33
-  # Testing quay build and push
-    - docker build -t=quay.io/revathird/samplenode_test .
-    - docker push quay.io/revathird/samplenode_test
-   # Testing ecr build and push
-    - docker build -t=742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_node .
-    - docker push 742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_node
-   # Testing multiple ecr push for different region
-    #- docker tag 742038439709.dkr.ecr.us-west-2.amazonaws.com/sample_java:latest 742038439709.dkr.ecr.us-east-1.amazonaws.com/sample_php:latest2
-    - docker build -t=742038439709.dkr.ecr.us-east-1.amazonaws.com/sample_php:latest2 .
-    - docker push 742038439709.dkr.ecr.us-east-1.amazonaws.com/sample_php:latest2
-   # Testing pdr build and push
-    - docker build -t $REGISTRY_URL/$PROJECT_NAME/$IMAGE_REPO:master.1116 .
-    - docker push $REGISTRY_URL/$PROJECT_NAME/$IMAGE_REPO:master.1116
-    
-  on_success:
-  # Testing to push to s3 bucket
-    - aws s3 sync $SHIPPABLE_BUILD_DIR $AWS_S3_BUCKET --region $AWS_S3_REGION
-    
+
 integrations:
   hub:
- #Docker integration
-    - integrationName: ship-docker
-      type: docker 
-      branches: #Testing the wildcards for branches include
-        only:
-          - master
+
   #GCR integration
     - integrationName: ship-gcr
       type: gcr
-  #ECR integration
-    - integrationName: ship-ecr
-      type: ecr
-      region: us-west-2
-      branches: #Testing the wildcards for branches exclude
-        except:
-          - n*
-    - integrationName: ship-ecreast1
-      type: ecr
-      region: us-east-1
-      
-  #Quay.io integration    
-    - integrationName: ship-quay
-      type: quay.io
-      branches: #Testing the wildcards for branches include
-        only:
-          - m*
-          
-    - integrationName: ship-pdr
-      type: "private docker registry" 
-      
-  generic:
-    - integrationName: "ship-keyvalue"
 
-  notifications:
     - integrationName: email         
       type: email        
       recipients: 
